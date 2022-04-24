@@ -7,7 +7,6 @@
 
 ![img](./img/Notifications.png)
 
-
 ## Implemented CRUD commands for Machine Rest API
 
 ### Create new machine parameter set 
@@ -42,3 +41,14 @@ To update specific machine parmaeter set, send PUT command to following address 
 > /api/machining-parameter-set/:id
 
 Delete specific machine parameter set, send DELETE command to following address together with parameter set id.
+<br>
+<br>
+## Usage examples
+Sending CRUD commands to REST API.
+
+![img](./img/ExampleEditParameterSet.png)
+<br>
+<br>
+Registering the listener to receive notifications. Notification includes message which action has been performed and the information what has been changed.
+
+![img](./img/ExampleNotifications.png)
