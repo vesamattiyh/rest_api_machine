@@ -15,10 +15,10 @@ Send POST command to following address together with machine parameters.
 > /api/machining-parameter-set
 
 - Machine parameter model follows predefined structure as
-    - tool_name (String)        - Name of the tool
-    - material (String)         - Type of the material
-    - cuttring_speed (Number)   - Cutting speed for given material
-    - feed_rate (Number)        - Feeding rate
+    - tool_name (String)&emsp;&emsp;&emsp;&emsp;&emsp;- Name of the tool
+    - material (String)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- Type of the material
+    - cuttring_speed (Number)&emsp;&emsp;- Cutting speed for given material
+    - feed_rate (Number)&emsp;&emsp;&emsp;&emsp; - Feeding rate
 <br>
 
 ### Retrieve all machine parameter sets
