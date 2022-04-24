@@ -1,22 +1,7 @@
 // This module implements CRUD methdos for Machine Rest API
 
+const notification_controller = require("./notification_controller");
 const parameter_model = require("./parameter_set_model");
-
-// Lisää parametrisetti:
-// POST /machining-parameter-set
-
-// Kysy kaikki parametrisetit:
-// GET /machining-parameter-sets
-
-// Kysy tietty parametrisetti:
-// GET /machining-parameter-set/:id
-
-// Päivitä parametrisetti:
-// PUT /machining-parameter-set/:id
-
-// Poista parametrisetti:
-// DELETE /machining-parameter-set/:id
-
 
 // CREATE new machine parameter set
 const api_post_parameter_set = (req, res) => {
@@ -25,6 +10,8 @@ const api_post_parameter_set = (req, res) => {
         .save()
         .then((model)=>{
             res.send(model);
+            let message = {msg : "New parameter set added", parameters: model};
+            notification_controller.broadcast_notifications(message);
     })
     .catch((error)=>{
         res.status(500);
@@ -56,9 +43,14 @@ const api_get_parameter_set = (req, res)=>{
 // UPDATE specific paramter set by id
 const api_put_parameter_set = (req, res)=>{
     const id = req.params.id;
-    parameter_model.findByIdAndUpdate(id, req.body).then((alarm)=>{
-        res.send(alarm);
-    }).catch((error)=>{
+    parameter_model.findByIdAndUpdate(id, req.body).then((parameter_set)=>{
+        res.send(parameter_set);
+        parameter_model.findById(id).then((updated_parameters)=>{
+            let message = {msg : "Parameter set updated", parameters: updated_parameters};
+            notification_controller.broadcast_notifications(message);
+        })
+    })
+    .catch((error)=>{
         res.status(404);
         res.send("Parameter set " + id +  " not found");
     });
@@ -67,8 +59,10 @@ const api_put_parameter_set = (req, res)=>{
 // DELETE specific paramter set by id
 const api_delete_parameter_set = (req, res)=>{
     const id = req.params.id;
-    parameter_model.findByIdAndDelete(id).then((alarm)=>{
-        res.send(alarm);
+    parameter_model.findByIdAndDelete(id).then((parameter_set)=>{
+        res.send(parameter_set);
+        let message = {msg : "Parameter set deleted", parameters: parameter_set};
+        notification_controller.broadcast_notifications(message);
     }).catch((error)=>{
         res.status(404);
         res.send("Parameter set " + id +  " not found");

@@ -1,14 +1,20 @@
 # REST API for Industry Machine
-- Makes it possible to create, update and delete parameter sets
-- Service running at: https://machine-restapi.herokuapp.com
+- Application can create, update and delete parameter sets of an industry machine
+- Websocket connection can be established to receive notifications from update, deleted and created parameter sets. Notifications will be broadcasted to all established connections.
+- The service is running at: https://machine-restapi.herokuapp.com
 
-## CRUD commands for Machine Rest API
+> For notifications subscribe machine_notifications listener
+
+![img](./img/Notifications.png)
+
+
+## Implemented CRUD commands for Machine Rest API
 
 ### Create new machine parameter set 
 Send POST command to following address together with machine parameters.
 > /api/machining-parameter-set
 
-- Machine parameter sets follows predefined structure as
+- Machine parameter model follows predefined structure as
     - tool_name (String)        - Name of the tool
     - material (String)         - Type of the material
     - cuttring_speed (Number)   - Cutting speed for given material
