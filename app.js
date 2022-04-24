@@ -5,7 +5,7 @@ const notification_controller = require("./notification_controller");
 const body_parser = require("body-parser");
 
 const PORT = process.env.PORT || 8080;
-const DB_KEY = process.env.DB_KEY || "wwLpSgBgTJYVJMWU";
+const DB_KEY = process.env.DB_KEY;
 
 const app = express();
 const server = require("http").createServer(app);
