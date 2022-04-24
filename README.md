@@ -14,7 +14,7 @@ Send POST command to following address together with machine parameters.
     - cuttring_speed (Number)   - Cutting speed for given material
     - feed_rate (Number)        - Feeding rate
 <br>
-<br>
+
 ### Retrieve all machine parameter sets
 > /api/machining-parameter-sets
 
