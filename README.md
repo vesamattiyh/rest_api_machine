@@ -3,7 +3,7 @@
 - Websocket connection can be established to receive notifications from update, deleted and created parameter sets. Notifications will be broadcasted to all established connections.
 - The service is running at: https://machine-restapi.herokuapp.com
 
-> For notifications subscribe machine_notifications listener
+> For notifications subscribe **machine_notifications** listener
 
 ![img](./img/Notifications.png)
 
