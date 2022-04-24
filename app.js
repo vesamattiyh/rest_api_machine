@@ -4,6 +4,7 @@ const parameter_controller = require("./parameter_controller");
 const body_parser = require("body-parser");
 
 const PORT = process.env.PORT || 8080;
+const DB_KEY = process.env.DB_KEY;
 
 const app = express();
 app.use(body_parser.json());
@@ -14,23 +15,8 @@ app.get("/api/machining-parameter-set/:id", parameter_controller.api_get_paramet
 app.put("/api/machining-parameter-set/:id", parameter_controller.api_put_parameter_set);
 app.delete("/api/machining-parameter-set/:id", parameter_controller.api_delete_parameter_set);
 
-// Lisää parametrisetti:
-// POST /machining-parameter-set
 
-// Kysy kaikki parametrisetit:
-// GET /machining-parameter-sets
-
-// Kysy tietty parametrisetti:
-// GET /machining-parameter-set/:id
-
-// Päivitä parametrisetti:
-// PUT /machining-parameter-set/:id
-
-// Poista parametrisetti:
-// DELETE /machining-parameter-set/:id
-
-
-const machine_db_uri = "mongodb+srv://db_user:wwLpSgBgTJYVJMWU@cluster0.ccq7s.mongodb.net/machine_db?retryWrites=true&w=majority";
+const machine_db_uri = "mongodb+srv://db_user:"+DB_KEY+"@cluster0.ccq7s.mongodb.net/machine_db?retryWrites=true&w=majority";
 
 mongoose.connect(machine_db_uri, {}).then(()=>{
     console.log("Database connected");
